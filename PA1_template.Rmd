@@ -42,5 +42,6 @@ byint[which.max(byint$V1)]
 
 ## Imputing missing values
 
+I was not able to get further than this by the deadline :'(
 
 ## Are there differences in activity patterns between weekdays and weekends?
