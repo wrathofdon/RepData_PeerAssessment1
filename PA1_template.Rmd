@@ -7,12 +7,22 @@ output:
 
 
 ## Loading and preprocessing the data
-
-
+```{r echo=TRUE}
+activity <- read.csv(unzip("activity.zip"))
+```
 
 ## What is mean total number of steps taken per day?
+```{r echo=TRUE}
+hist(activity[!is.na(activity$steps),]$steps, main="Total Number of Steps Taken Per Day", xlab="Steps")
+```
 
+```{r echo=TRUE}
+mean(activity[!is.na(activity$steps),]$steps)
+```
 
+```{r echo=TRUE}
+median(activity[!is.na(activity$steps),]$steps)
+```
 
 ## What is the average daily activity pattern?
 
