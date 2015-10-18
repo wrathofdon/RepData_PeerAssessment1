@@ -8,28 +8,39 @@ output:
 
 ## Loading and preprocessing the data
 ```{r echo=TRUE}
-activity <- read.csv(unzip("activity.zip"))
+library(data.table)
+DT = data.table(read.csv(unzip("activity.zip")))
 ```
 
 ## What is mean total number of steps taken per day?
 ```{r echo=TRUE}
-hist(activity[!is.na(activity$steps),]$steps, main="Total Number of Steps Taken Per Day", xlab="Steps")
+filtered <- data.table(DT[!is.na(DT$steps),])
+byday <- filtered[, sum(steps), by = "date"]
+byday <- data.table(byday$V1, byday$date)
+hist(byday$V1, main="Total Number of Steps Taken Per Day", xlab="Steps", breaks=8)
 ```
 
 ```{r echo=TRUE}
-mean(activity[!is.na(activity$steps),]$steps)
+mean(byday$V1)
 ```
 
 ```{r echo=TRUE}
-median(activity[!is.na(activity$steps),]$steps)
+median(byday$V1)
 ```
 
 ## What is the average daily activity pattern?
 
+```{r echo=TRUE}
+filtered <- data.table(DT[!is.na(DT$steps),])
+byint <- filtered[, mean(steps), by = "interval"]
+plot(byint, type="l")
+```
 
+```{r echo=TRUE}
+byint[which.max(byint$V1)]
+```
 
 ## Imputing missing values
-
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
