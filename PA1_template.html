@@ -104,6 +104,7 @@ plot(byint, type=&quot;l&quot;)</code></pre>
 sum(missing)</code></pre>
 <pre><code>## [1] 2304</code></pre>
 <p>Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.</p>
+<p>I generated a new data table called newint of all the time intervals using the levels and factors functions. We then go down the list of missing values. If an average number of steps for that interval is available, we use that as the new value. Otherwise, we look at the most recent available average.</p>
 <pre class="r"><code>newDT &lt;- data.table(read.csv(unzip(&quot;activity.zip&quot;)))
 newint &lt;- levels(factor(DT$interval))
 steps &lt;- c(1:length(newint))

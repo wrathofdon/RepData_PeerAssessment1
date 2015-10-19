@@ -60,6 +60,8 @@ sum(missing)
 
 Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
+I generated a new data table called newint of all the time intervals using the levels and factors functions.  We then go down the list of missing values.  If an average number of steps for that interval is available, we use that as the new value.  Otherwise, we look at the most recent available average.
+
 ```{r echo=TRUE}
 newDT <- data.table(read.csv(unzip("activity.zip")))
 newint <- levels(factor(DT$interval))
