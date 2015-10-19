@@ -105,3 +105,12 @@ median(byday$V1)
 The biggest impact is that you see higher frequency centered around the middle bar, which means less variance.
 
 ## Are there differences in activity patterns between weekdays and weekends?
+
+```{r echo=TRUE}
+weekend <- weekdays(as.Date(newDT$date)) == "Saturday" | weekdays(as.Date(newDT$date)) == "Sunday"
+weekday <- !weekend
+byint <- newDT[weekend][, mean(steps), by = "interval"]
+plot(byint, type="l", main="Weekends")
+byint <- newDT[weekday][, mean(steps), by = "interval"]
+plot(byint, type="l", main="Weekdays")
+```
