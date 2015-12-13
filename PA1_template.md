@@ -144,7 +144,8 @@ median(byday$V1)
 ## [1] 10641
 ```
 
-The biggest impact is that you see higher frequency centered around the middle bar, which means less variance.
+The biggest impact is that you see higher frequency centered around the middle bar, so less variance.
+
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
